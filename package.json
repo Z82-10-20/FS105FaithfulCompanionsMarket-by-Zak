@@ -10,7 +10,8 @@
     "client": "npm start --prefix FS105FaithfulCompanionsMarket-main",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder.js",
-    "data:destroy": "node backend/seeder.js -d"
+    "data:destroy": "node backend/seeder.js -d",
+    "build": "npm install && npm install --prefix FS105FaithfulCompanionsMarket-main && npm run build --prefix FS105FaithfulCompanionsMarket-main"
   },
   "author": "FaithfulCompanionsMarket",
   "license": "ISC",
