@@ -1,73 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import LandingPage from './pages/LandingPage'; // Ensure this path is correct relative to App.js
-import About from "./pages/About";
-import ContactUsFrom from "./pages/Contact.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import CatPage from "./pages/CatPage.jsx";
-import DogPage from "./pages/DogPage.jsx";
-import BirdPage from "./pages/BirdPage.jsx";
-import FishesPage from "./pages/FishesPage.jsx";
-import PetAccessoriesPage from "./pages/PetAccessoriesPage.jsx";
-import PetFood from "./pages/PetFood.jsx";
-import Cart from "./pages/CartPage.jsx";
-import Login from "./pages/Login.jsx";
-import SignUp from "./pages/SignUp.jsx";
-import ResetPassword from "./pages/ResetPassword";
-// import Preloader from "./components/Preloader";
-import Preloader2 from "./components/Preloader2";
-import CatDetail from "./pages/CatDetail.jsx";
-import DogDetail from "./pages/DogDetail.jsx";
-import BirdDetail from "./pages/BirdDetail.jsx";
-import FishDetail from "./pages/FishDetail.jsx";
-import AccessoryDetail from "./pages/AccessoryDetail.jsx";
-import PetFoodDetail from "./pages/PetFoodDetail.jsx";
-import ShippingPage from "./pages/ShippingPage.jsx";
+import React, { useState, useEffect } from 'react'; // Import React, useState, and useEffect
+import { Outlet } from 'react-router-dom'; // Import Outlet
+import { ToastContainer } from 'react-toastify'; // Import ToastContainer
+import 'react-toastify/dist/ReactToastify.css'; // Import toastify styles
+import Preloader2 from './components/Preloader2'; // Import Preloader2 component
 
 function App() {
-
-  // For the preloading screen //
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // Define isLoading state
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false);
+      setIsLoading(false); // Set isLoading to false after 2000ms
     }, 2000);
   }, []);
 
   return (
     <div className="App">
+   
       {isLoading ? (
-        <Preloader2 />
+        <Preloader2 /> // Display Preloader2 while isLoading is true
       ) : (
         <>
-          <Router>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route index={true} path="/homepage" element={<HomePage />} />
-              <Route path="/aboutus" element={<About />} />
-              <Route path="/contactus" element={<ContactUsFrom />} />
-              <Route path="/cats" element={<CatPage />} />
-               <Route path="/cat-detail/:id/:name" element={<CatDetail />} />
-              <Route path="/dogs" element={<DogPage />} />
-               <Route path="/dog-detail/:id/:name" element={<DogDetail />} />
-              <Route path="/birds" element={<BirdPage />} />
-              <Route path="/bird-detail/:id/:name" element={<BirdDetail />} />
-              <Route path="/fishes" element={<FishesPage />} />
-              <Route path="/fish-detail/:id/:name" element={<FishDetail />} />
-              <Route path="/petaccessories" element={<PetAccessoriesPage />} />
-              <Route path="/accessory-detail/:id/:name" element={<AccessoryDetail />} />
-              <Route path="/petfoods" element={<PetFood />} />
-               <Route path="/petfood-detail/:id/:name" element={<PetFoodDetail />} />              
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/resetpassword" element={<ResetPassword />} />
-              <Route path='/shipping' element={<ShippingPage />} />
-            </Routes>
-          </Router>
+          <Outlet /> {/* Render nested child routes */}
+          <ToastContainer /> {/* Render ToastContainer for displaying notifications */}
         </>
       )}
+     
     </div>
   );
 }

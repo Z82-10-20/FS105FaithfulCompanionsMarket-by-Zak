@@ -53,3 +53,14 @@
     text-decoration: underline;
     font-weight: 600;
 }
+
+.custom-Shipping {
+ background-color: transparent;
+border-color: #FFB76B;
+  border-style: solid;
+  color:black;
+}
+
+.custom-Shipping:hover {
+ background-color: #E48F45;
+}

@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const reviewSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Reference to the User model
+    ref: "user", // Reference to the User model
     required: true,
   },
   name: {
@@ -28,7 +28,7 @@ const birdSchema = new mongoose.Schema({
   user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User',
+      ref: 'user',
     },
     sn: {
     type: Number,

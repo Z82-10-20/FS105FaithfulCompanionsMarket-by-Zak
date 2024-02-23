@@ -37,9 +37,12 @@ const CartPage = () => {
   return (
     <>
       <Navbar />
+      
+    
       <Row>
+     <div className='mt-5'>Blank</div>
         <Col md={8}>
-          <h1 style={{ marginBottom: '20px' }}>Shopping Cart</h1>
+          <h1 style={{ marginBottom: '10px' }}>Shopping Cart</h1>
           {cartItems.length === 0 ? (
             <Message>
               Your cart is empty <Link to='/'>Go Back</Link>
@@ -87,7 +90,7 @@ const CartPage = () => {
             </ListGroup>
           )}
         </Col>
-        <Col md={4} className='mt-5'>
+        <Col md={3} className='mt-5'>
           <Card className='mt-5'>
             <ListGroup variant='flush'>
               <ListGroup.Item style={{ color: 'black', backgroundColor: 'light-grey' }}>

@@ -10,7 +10,7 @@ const cats = [
     species: "Munchkin",
     category: "Pets",
     price: 800,
-    availability: 10,
+    availability: 1,
     rating: 4.0,
     numReviews: 15,
   },

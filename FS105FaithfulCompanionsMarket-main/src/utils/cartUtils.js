@@ -8,10 +8,10 @@ export const updateCart = state => {
     state.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
 
-  // Calculate Shipping Price (If order over £100 then free or $15.00)
-  state.shippingPrice = addDecimals(state.itemsPrice > 500 ? 0 : 15)
+  // Calculate Shipping Price (If order over $100 then free or $15.00)
+  state.shippingPrice = addDecimals(state.itemsPrice > 50 ? 0 : 15)
 
-  // Calculate Tax Price (20% VAT)
+  // Calculate Tax Price ()
   state.taxPrice = addDecimals(Number(0.09 * state.itemsPrice).toFixed(2))
 
   // Calculate Total Price
@@ -23,5 +23,5 @@ export const updateCart = state => {
 
   localStorage.setItem('cart', JSON.stringify(state))
 
-  return state
+  return state;
 }

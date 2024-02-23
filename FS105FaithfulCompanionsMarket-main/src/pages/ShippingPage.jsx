@@ -5,11 +5,14 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { saveShippingAddress } from '../slices/cartSlice';
 import Navbar from '../components/Navbar';
-
+import "../styles/Login.css";
+import CheckoutSteps from '../components/CheckoutStep';
 const ShippingPage = () => {
 
-     const cart = useSelector((state) => state.cart);
+    const cart = useSelector((state) => state.cart);
     const { shippingAddress } = cart;
+    
+    
     const [address, setAddress] = useState(shippingAddress?.address || '');
     const [city, setCity] = useState(shippingAddress?.city || '');
     const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode || '');
@@ -18,8 +21,6 @@ const ShippingPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-
-   
     
     const submitHandler = (e) => {
 e.preventDefault();
@@ -27,13 +28,18 @@ dispatch(saveShippingAddress({ address, city, postalCode, country}));
   navigate('/payment');
 };
 
+ const handleBack = () => {
+    navigate('/Cart');
+  };
+
   return (
    
     <div >
 <Navbar />
     <FormContainer className='mt-5'>
     <div className='mt-5'>Blank</div>
-    <h1 className='mt-5'>ShippingPage</h1>
+    <h1 className='mt-5'>Shipping</h1>
+    <CheckoutSteps step1 step2 />
     
     <Form onSubmit={submitHandler}>
 <Form.Group controlId='address' className='my-2'>
@@ -78,9 +84,12 @@ dispatch(saveShippingAddress({ address, city, postalCode, country}));
     </Form.Control>
 </Form.Group>
 
-<Button type='submit' variant='primary' className='my-2'>
+<Button type='submit' className='custom-Shipping my-2'>
 Continue
+</Button>
 
+<Button type='back' className="custom-Shipping ms-2" onClick={handleBack}>
+Back
 </Button>
     </Form>
     </FormContainer>

@@ -1,10 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavbarForResetPasswordPage from "../components/NavbarForResetPasswordPage";
 import fcmlogo from "../images/logo/fcmlogo.jpeg";
 import "../styles/Login.css";
 
 function ResetPassword() {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate('/login');
+  };
+
   return (
     <div>
       <NavbarForResetPasswordPage />
@@ -21,7 +27,7 @@ function ResetPassword() {
           <div className="card custom-login-box">
             <div className="card-header p-5">Reset Password</div>
             <div className="card-body">
-              <form>              
+              <form>
                 <div className="form-group p-1">
                   <label htmlFor="email">Email:</label>
                   <input
@@ -32,10 +38,15 @@ function ResetPassword() {
                     placeholder="Enter your email"
                   />
                 </div>
-                <button type="submit" className="custom-login-loginbutton">
-                  Submit
-                </button>
-              
+                <div>
+                   <button type="submit" className="custom-login-loginbutton">
+                    Submit
+                  </button>
+                  <button type="button" className="custom-login-loginbutton" onClick={handleBack}>
+                    Back
+                  </button>
+                 
+                </div>
               </form>
             </div>
           </div>

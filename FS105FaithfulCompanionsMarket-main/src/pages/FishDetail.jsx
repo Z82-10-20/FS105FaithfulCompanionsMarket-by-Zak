@@ -7,7 +7,7 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { useGetFishesDetailsQuery } from "../slices/apiProducts";
 import { addToCart } from "../slices/cartSlice";
-
+import '../styles/PetDetail.css';
 const FishDetail = () => {
   const { id: fishId } = useParams();
   const dispatch = useDispatch();

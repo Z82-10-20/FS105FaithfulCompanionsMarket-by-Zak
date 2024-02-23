@@ -6,6 +6,9 @@ import {
     getAccessoryById,
     getBirds,
     getBirdById,
+    createBird,
+    updateBird,
+    deleteBird,
     getCats,
     getCatById,
     getDogs,
@@ -14,8 +17,9 @@ import {
     getFishById,
     getPetfoods,
     getPetfoodById,
+    
 } from '../controllers/productctrl.js';
-
+ import {protect, admin} from '../middleware/authMiddleware.js';
 // Create a router for each resource
 const accessoryRouter = express.Router();
 const birdRouter = express.Router();
@@ -32,11 +36,9 @@ accessoryRouter.route('/:id') // Using .route() for the path with ID parameter
     .get(getAccessoryById); // Define the route handler for GET request with ID
 
 // Bird routes
-birdRouter.route('/')
-    .get(getBirds);
+birdRouter.route('/').get(getBirds).post(protect, admin, createBird);
 
-birdRouter.route('/:id')
-    .get(getBirdById);
+birdRouter.route('/:id').get(getBirdById).put(protect, admin, updateBird).delete(protect, admin, deleteBird);
 
 // Cat routes
 catRouter.route('/')
@@ -65,6 +67,8 @@ petfoodRouter.route('/')
 
 petfoodRouter.route('/:id')
     .get(getPetfoodById);
+
+   
 
 // Export all routers
 export { accessoryRouter, birdRouter, catRouter, dogRouter, fishRouter, petfoodRouter };

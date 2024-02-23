@@ -104,6 +104,19 @@ const dogs = [
     rating: 4.8,
     numReviews: 35,
   },
+    {
+    sn: 8,
+    name: "Buddy",
+    type: "dog",
+    image: '/images/dogs/dog8.jpg',
+    description: "A spirited and independent Japanese breed, known for its loyalty and fox-like appearance.",
+    species: "Shiba Inu",
+    category: "Pets",
+    price: 699.99,
+    availability: 7,
+    rating: 4.8,
+    numReviews: 35,
+  },
 
 
 ];

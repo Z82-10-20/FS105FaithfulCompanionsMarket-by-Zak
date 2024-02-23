@@ -15,21 +15,10 @@ export const USERS_URL = '/api/users';
 export const ORDERS_URL = '/api/orders';
 export const PAYPAL_URL = '/api/config/paypal';
 export const STRIPE_URL = '/api/config/stripe';
-export const UPLOAD_URL = '/api/upload'
+export const UPLOAD_URL = '/api/upload';
 
 const baseQuery = fetchBaseQuery({ baseUrl:''});
 const TAG_TYPES = ['Accessories', 'Birds', 'Cats', 'Dogs', 'Fishes', 'PetFood', 'Order', 'User'];
-
-// export const apiSlice = createApi({
-//   reducerPath: 'api',
-//   baseQuery,
-//   tagTypes: TAG_TYPES,
-//   endpoints: (builder) => ({}),
-// });
-
-// export const { useGetAccessoriesQuery, useGetBirdsQuery, useGetCatsQuery, useGetDogsQuery, useGetFishesQuery, useGetPetfoodQuery } = apiSlice;
-
-// export const { reducer: apiReducer } = apiSlice;
 
 
 //  These constants will help maintain consistency and avoid hardcoding URLs throughout your application.

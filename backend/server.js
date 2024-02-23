@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -6,9 +7,9 @@ import connectDB from './config/mongodb.js';
 import bodyParser from 'body-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import { accessoryRouter, birdRouter, catRouter, dogRouter, fishRouter, petfoodRouter } from './routes/productRouter.js';
-// import userRoutes from './routes/userRoutes.js';
-
-
+import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -17,7 +18,7 @@ const port = process.env.PORT || 5000;
 const app = express ();
 
 
-app.use(cors()); // Enable CORS
+// app.use(cors()); // Enable CORS
 app.use(express.json());
 connectDB();
 // Body parser middleware
@@ -42,15 +43,15 @@ app.use('/api/fishpage', fishRouter); // Mount the fishRouter at /api/fishes
 app.use('/api/petfoodpage', petfoodRouter);
 
 
-// app.use('/api/users', userRoutes); 
+app.use('/api/users', userRoutes); // userRoutes
+app.use('/api/orders', orderRoutes);
+app.use('/api/upload', uploadRoutes);
+app.get('/api/config/paypal', (req, res) => res.send({ clientId: process.env.PAYPAL_CLIENT_ID }));
+
+const _dirname = path.resolve();
+app.use('/uploads', express.static(path.join(_dirname, '/uploads')));
 app.use(notFound);
 app.use(errorHandler);
-
-
-
-
-
-
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
